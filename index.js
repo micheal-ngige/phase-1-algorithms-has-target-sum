@@ -1,6 +1,19 @@
-function hasTargetSum(array, target) {
+
   // Write your algorithm here
+  function hasTargetSum(arr, target) {
+  const seen = new Set();
+
+  for (let num of arr) {
+    const complement = target - num;
+    if (seen.has(complement)) {
+      return true;
+    }
+    seen.add(num);
+  }
+
+  return false;
 }
+
 
 /* 
   Write the Big O time complexity of your function here
@@ -29,6 +42,9 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
+  console.log(hasTargetSum([1, 2, 3, 4, 5], 9)); 
+console.log(hasTargetSum([10, 20, 30, 40, 50], 75));
 }
 
 module.exports = hasTargetSum;
